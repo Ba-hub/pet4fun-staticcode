@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Pet4fun</title>
+    <meta name="description" content="pet4fun" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/flaticon_pet_care.css" />
+    <link rel="stylesheet" href="assets/css/odometer.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/default.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      :root {
+        --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        --secondary-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        --glass-bg: rgba(255, 255, 255, 0.95);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.15),
+          0 8px 12px -4px rgba(0, 0, 0, 0.1);
+      }
+
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+        transition: all 0.3s ease;
+      }
+
+      .glass-card:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-2px);
+      }
+
+      .checkout-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        animation: fadeInDown 0.8s ease;
+      }
+
+      .checkout-header h1 {
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .checkout-header p {
+        color: #64748b;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cart-section {
+        animation: fadeInRight 0.8s ease 0.2s both;
+      }
+
+      .form-section {
+        animation: fadeInLeft 0.8s ease 0.4s both;
+      }
+
+      .cart-header {
+        background: var(--primary-gradient);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .cart-items {
+        padding: 0;
+        margin: 0;
+        border-radius: 0 0 20px 20px;
+        overflow: hidden;
+      }
+
+      .cart-item {
+        border: none;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cart-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .cart-item:hover::before {
+        left: 100%;
+      }
+
+      .cart-item:hover {
+        background: rgba(99, 102, 241, 0.05);
+        transform: translateX(5px);
+      }
+
+      .promo-item {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        border-left: 4px solid #10b981;
+      }
+
+      .total-item {
+        background: #6366f1;
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .form-floating {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .form-floating input,
+      .form-floating select {
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .form-floating input:focus,
+      .form-floating select:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        background: white;
+      }
+
+      .form-floating label {
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        margin: 3rem 0 2rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      .section-header:first-child {
+        margin-top: 0;
+      }
+
+      .section-header i {
+        background: var(--primary-gradient);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      .section-header h4 {
+        margin: 0;
+        color: #1e293b;
+        font-weight: 700;
+      }
+
+      .custom-radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 2rem 0 3rem 0;
+      }
+
+      .custom-radio-item {
+        position: relative;
+        padding: 1.5rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .custom-radio-item:hover {
+        border-color: #6366f1;
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .custom-radio-item.active {
+        border-color: #6366f1;
+        background: rgba(99, 102, 241, 0.1);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+      }
+
+      .custom-radio-item input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .radio-checkmark {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #cbd5e1;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .custom-radio-item.active .radio-checkmark {
+        border-color: #6366f1;
+        background: #6366f1;
+      }
+
+      .custom-radio-item.active .radio-checkmark::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: white;
+      }
+
+      .billing-address-form {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, opacity 0.3s ease;
+        opacity: 0;
+        margin: 2rem 0 3rem 0;
+      }
+
+      .billing-address-form.show {
+        max-height: 2000px;
+        opacity: 1;
+      }
+
+      .checkout-btn {
+        background: var(--primary-gradient);
+        border: none;
+        padding: 1rem 3rem;
+        border-radius: 50px;
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+        width: 100%;
+        margin-top: 3rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .checkout-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .checkout-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .checkout-btn:hover::before {
+        left: 100%;
+      }
+
+      .save-info-checkbox {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(99, 102, 241, 0.05);
+        border-radius: 15px;
+        margin: 2rem 0 3rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .save-info-checkbox:hover {
+        background: rgba(99, 102, 241, 0.1);
+      }
+
+      .save-info-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 1rem;
+        accent-color: #6366f1;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          max-height: 0;
+          opacity: 0;
+        }
+        to {
+          max-height: 2000px;
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .checkout-header h1 {
+          font-size: 2rem;
+        }
+
+        .glass-card {
+          border-radius: 15px;
+          margin-bottom: 2rem;
+        }
+
+        .cart-header {
+          border-radius: 15px 15px 0 0;
+        }
+
+        .cart-items {
+          border-radius: 0 0 15px 15px;
+        }
+
+        .custom-radio-item {
+          padding: 1rem;
+        }
+
+        .section-header i {
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--Preloader-->
+    <div id="preloader">
+      <div id="loader" class="loader">
+        <div class="loader-container">
+          <div class="loader-icon">
+            <img src="assets/img/logo/preloader.svg" alt="Preloader" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Preloader-end -->
+
+    <!-- Scroll-top -->
+    <button class="scroll__top scroll-to-target" data-target="html">
+      <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+
+    <!-- header-area -->
+    <header>
+      <div id="header-fixed-height"></div>
+      <div class="tg-header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-8">
+              <ul class="tg-header__top-info left-side list-wrap">
+                <li><i class="flaticon-placeholder"></i>Kolkata, India</li>
+                <li>
+                  <i class="flaticon-mail"></i
+                  ><a href="mailto:Petspostinfo@gmail.com">pet4fun@gmail.com</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-6 col-lg-4">
+              <ul class="tg-header__top-right list-wrap">
+                <li>
+                  <i class="flaticon-phone"></i>Need help? Call Us:
+                  <a href="tel:0123456789">+91 9876543210</a>
+                </li>
+                <li class="tg-header__top-social">
+                  <ul class="list-wrap">
+                    <li>
+                      <a href="https://www.facebook.com/" target="_blank"
+                        ><i class="fab fa-facebook-f"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/" target="_blank"
+                        ><i class="fab fa-twitter"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.whatsapp.com/" target="_blank"
+                        ><i class="fab fa-whatsapp"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.youtube.com/" target="_blank"
+                        ><i class="fab fa-youtube"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sticky-header" class="tg-header__area tg-header__area-four">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="tgmenu__wrap">
+                <nav class="tgmenu__nav">
+                  <div class="logo">
+                    <a href=""><img src="assets/img/logo/logo.png" alt="" /></a>
+                  </div>
+                  <div
+                    class="tgmenu__navbar-wrap tgmenu__navbar-wrap-two tgmenu__main-menu d-none d-xl-flex"
+                  >
+                    <ul class="navigation">
+                      <li><a href="">Home</a></li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Shop</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Our Shop</a></li>
+                          <li><a href="">Offers</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Dogs</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Dogs1</a></li>
+                          <li><a href="">Dogs2</a></li>
+                          <li><a href="">Dogs3</a></li>
+                          <li><a href="">Dogs4</a></li>
+                          <li><a href="">Dogs5</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Cats</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Cats1</a></li>
+                          <li><a href="">Cats2</a></li>
+                          <li><a href="">Cats3</a></li>
+                          <li><a href="">Cats4</a></li>
+                          <li><a href="">Cats5</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="">pet4fun clinic</a></li>
+                      <li><a href="">contacts</a></li>
+                    </ul>
+                  </div>
+                  <div class="tgmenu__search">
+                    <form action="#" class="tgmenu__search-form">
+                      <input type="text" placeholder="Search Here . . ." />
+                      <div class="select-grp">
+                        <select
+                          class="form-select"
+                          id="course-cat"
+                          aria-label="Default select example"
+                          style="width: 130px"
+                        >
+                          <option selected disabled>All Categories</option>
+                          <option value="1">Dogs</option>
+                          <option value="2">Cats</option>
+                          <option value="3">Bull Dog</option>
+                          <option value="4">Others</option>
+                        </select>
+                      </div>
+                      <button type="submit">
+                        <i class="flaticon-loupe"></i>
+                      </button>
+                    </form>
+                  </div>
+                  <div class="tgmenu__action tgmenu__action-three d-md-block">
+                    <ul class="list-wrap">
+                      <li class="header-login">
+                        <a href="">
+                          <i class="flaticon-user"></i>
+                        </a>
+                      </li>
+                      <li class="header-wishlist">
+                        <a href="javascript:void(0)">
+                          <i class="flaticon-love"></i>
+                        </a>
+                      </li>
+                      <li class="header-cart header-cart-two">
+                        <a href="javascript:void(0)">
+                          <i class="flaticon-shopping-bag"></i>
+                          <span>0</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mobile-nav-toggler">
+                    <i class="flaticon-layout"></i>
+                  </div>
+                </nav>
+              </div>
+
+              <!-- Mobile Menu  -->
+              <div class="tgmobile__menu">
+                <nav class="tgmobile__menu-box">
+                  <div class="close-btn"><i class="fas fa-times"></i></div>
+                  <div class="nav-logo">
+                    <a href="">Pet4fun Logo</a>
+                  </div>
+                  <div class="tgmobile__search">
+                    <form action="#">
+                      <input type="text" placeholder="Search here..." />
+                      <button><i class="fas fa-search"></i></button>
+                    </form>
+                  </div>
+                  <div class="tgmobile__menu-outer"></div>
+                  <div class="social-links">
+                    <ul class="list-wrap">
+                      <li>
+                        <a href="https://www.facebook.com/" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://twitter.com/" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.whatsapp.com/" target="_blank"
+                          ><i class="fab fa-whatsapp"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/" target="_blank"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+              <div class="tgmobile__menu-backdrop"></div>
+              <!-- End Mobile Menu -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header-area-end -->
+
+    <!-- main-area -->
+    <main class="fix">
+      <!-- breadcrumb-area -->
+      <section class="breadcrumb__area fix">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-8">
+              <div class="breadcrumb__content">
+                <h3 class="title">Checkout</h3>
+                <nav class="breadcrumb">
+                  <span property="itemListElement" typeof="ListItem">
+                    <a href="">Home</a>
+                  </span>
+                  <span class="breadcrumb-separator"
+                    ><i class="flaticon-right-arrow-angle"></i
+                  ></span>
+                  <span property="itemListElement" typeof="ListItem"
+                    >Checkout</span
+                  >
+                </nav>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="breadcrumb__img">
+                <img
+                  src="assets/img/images/breadcrumb_img.png"
+                  alt="img"
+                  data-aos="fade-left"
+                  data-aos-delay="800"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="breadcrumb__shape-wrap">
+          <img
+            src="assets/img/images/breadcrumb_shape01.png"
+            alt="img"
+            data-aos="fade-down-right"
+            data-aos-delay="400"
+          />
+          <img
+            src="assets/img/images/breadcrumb_shape02.png"
+            alt="img"
+            data-aos="fade-up-left"
+            data-aos-delay="400"
+          />
+        </div>
+      </section>
+      <!-- breadcrumb-area-end -->
+
+      <!-- contact-area -->
+      <section>
+        <br />
+        <div class="container">
+          <div class="checkout-header">
+            <h1><i class="fas fa-shopping-cart"></i> Checkout Your Items</h1>
+            <p>
+              Complete your purchase with our secure and streamlined checkout
+              process. Each step is designed to make your shopping experience
+              smooth and delightful.
+            </p>
+          </div>
+
+          <div class="row">
+            <!-- Cart Section -->
+            <div class="col-lg-4 order-lg-2 mb-4 cart-section">
+              <div class="glass-card">
+                <div class="cart-header">
+                  <h4><i class="fas fa-shopping-bag me-2"></i>Your Cart</h4>
+                  <span class="badge bg-light text-dark rounded-pill">3</span>
+                </div>
+                <ul class="cart-items list-group">
+                  <li
+                    class="cart-item list-group-item d-flex justify-content-between"
+                  >
+                    <div>
+                      <h6 class="mb-1">Premium Headphones</h6>
+                      <small class="text-muted">Wireless Bluetooth 5.0</small>
+                    </div>
+                    <span class="text-primary fw-bold">₹12</span>
+                  </li>
+                  <li
+                    class="cart-item list-group-item d-flex justify-content-between"
+                  >
+                    <div>
+                      <h6 class="mb-1">Smart Watch</h6>
+                      <small class="text-muted">Fitness Tracker</small>
+                    </div>
+                    <span class="text-primary fw-bold">₹8</span>
+                  </li>
+                  <li
+                    class="cart-item list-group-item d-flex justify-content-between"
+                  >
+                    <div>
+                      <h6 class="mb-1">Phone Case</h6>
+                      <small class="text-muted">Protective Cover</small>
+                    </div>
+                    <span class="text-primary fw-bold">₹5</span>
+                  </li>
+                  <li
+                    class="cart-item promo-item list-group-item d-flex justify-content-between"
+                  >
+                    <div>
+                      <h6 class="mb-1 text-success">
+                        <i class="fas fa-tag me-1"></i>Promo Code
+                      </h6>
+                      <small class="text-success">WELCOME20</small>
+                    </div>
+                    <span class="text-success fw-bold">-₹5</span>
+                  </li>
+                  <li
+                    class="total-item list-group-item d-flex justify-content-between"
+                  >
+                    <span><i class="fas fa-receipt me-2"></i>Total Price</span>
+                    <strong>₹20</strong>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="col-lg-8 order-lg-1 form-section">
+              <div class="glass-card p-4">
+                <form class="needs-validation" novalidate>
+                  <!-- Delivery Address Section -->
+                  <div class="section-header">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Delivery Address</h4>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="firstName"
+                          name="fname"
+                          placeholder="First Name"
+                          required
+                        />
+                        <label for="firstName">First Name</label>
+                        <div class="invalid-feedback">
+                          Valid first name is required.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lastName"
+                          name="lname"
+                          placeholder="Last Name"
+                          required
+                        />
+                        <label for="lastName">Last Name</label>
+                        <div class="invalid-feedback">
+                          Valid last name is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input
+                          type="tel"
+                          class="form-control"
+                          id="phoneNumber"
+                          name="phone"
+                          placeholder="Phone Number"
+                          required
+                        />
+                        <label for="phoneNumber">Phone Number</label>
+                        <div class="invalid-feedback">
+                          Valid phone number is required.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input
+                          type="tel"
+                          class="form-control"
+                          id="alternatePhone"
+                          name="phone2"
+                          placeholder="Alternate Phone"
+                        />
+                        <label for="alternatePhone"
+                          >Alternate Phone (Optional)</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="address"
+                      name="address"
+                      placeholder="Full Address"
+                      required
+                    />
+                    <label for="address">Full Address</label>
+                    <div class="invalid-feedback">
+                      Please enter your shipping address.
+                    </div>
+                  </div>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="address2"
+                      name="address2"
+                      placeholder="Address Line 2"
+                    />
+                    <label for="address2">Address Line 2 (Optional)</label>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-floating">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="city"
+                          name="city"
+                          placeholder="City"
+                          required
+                        />
+                        <label for="city">City</label>
+                        <div class="invalid-feedback">
+                          Valid city name is required.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-floating">
+                        <select
+                          class="form-select"
+                          id="state"
+                          name="state"
+                          required
+                        >
+                          <option value="">Select State</option>
+                          <option value="AN">
+                            Andaman and Nicobar Islands
+                          </option>
+                          <option value="AP">Andhra Pradesh</option>
+                          <option value="AR">Arunachal Pradesh</option>
+                          <option value="AS">Assam</option>
+                          <option value="BR">Bihar</option>
+                          <option value="CH">Chandigarh</option>
+                          <option value="CT">Chhattisgarh</option>
+                          <option value="DN">Dadra and Nagar Haveli</option>
+                          <option value="DD">Daman and Diu</option>
+                          <option value="DL">Delhi</option>
+                          <option value="GA">Goa</option>
+                          <option value="GJ">Gujarat</option>
+                          <option value="HR">Haryana</option>
+                          <option value="HP">Himachal Pradesh</option>
+                          <option value="JK">Jammu and Kashmir</option>
+                          <option value="JH">Jharkhand</option>
+                          <option value="KA">Karnataka</option>
+                          <option value="KL">Kerala</option>
+                          <option value="LA">Ladakh</option>
+                          <option value="LD">Lakshadweep</option>
+                          <option value="MP">Madhya Pradesh</option>
+                          <option value="MH">Maharashtra</option>
+                          <option value="MN">Manipur</option>
+                          <option value="ML">Meghalaya</option>
+                          <option value="MZ">Mizoram</option>
+                          <option value="NL">Nagaland</option>
+                          <option value="OR">Odisha</option>
+                          <option value="PY">Puducherry</option>
+                          <option value="PB">Punjab</option>
+                          <option value="RJ">Rajasthan</option>
+                          <option value="SK">Sikkim</option>
+                          <option value="TN">Tamil Nadu</option>
+                          <option value="TG">Telangana</option>
+                          <option value="TR">Tripura</option>
+                          <option value="UP">Uttar Pradesh</option>
+                          <option value="UT">Uttarakhand</option>
+                          <option value="WB">West Bengal</option>
+                        </select>
+                        <label for="state">Select State</label>
+                        <div class="invalid-feedback">
+                          Please select a valid state.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-floating">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="zipcode"
+                          name="zipcode"
+                          placeholder="Zip Code"
+                          required
+                        />
+                        <label for="zipcode">Zip Code</label>
+                        <div class="invalid-feedback">
+                          Valid zip code is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="landmarks"
+                      name="landmarks"
+                      placeholder="Landmarks"
+                    />
+                    <label for="landmarks">Landmarks (Optional)</label>
+                  </div>
+
+                  <div class="save-info-checkbox">
+                    <input type="checkbox" id="saveInfo" name="saveInfo" />
+                    <label for="saveInfo"
+                      ><i class="fas fa-bookmark me-2"></i>Save this information
+                      for next time</label
+                    >
+                  </div>
+
+                  <!-- Billing Address Section -->
+                  <div class="section-header">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Billing Address</h4>
+                  </div>
+
+                  <div class="custom-radio-group">
+                    <div
+                      class="custom-radio-item active"
+                      onclick="selectBillingOption('same')"
+                    >
+                      <input
+                        type="radio"
+                        id="billingSame"
+                        name="billingAddress"
+                        value="same"
+                        checked
+                        required
+                      />
+                      <div class="radio-checkmark"></div>
+                      <strong
+                        ><i class="fas fa-check-circle me-2 text-success"></i
+                        >Same as delivery address</strong
+                      >
+                      <p class="text-muted mb-0 mt-1">
+                        Use the same address for billing
+                      </p>
+                    </div>
+                    <div
+                      class="custom-radio-item"
+                      onclick="selectBillingOption('different')"
+                    >
+                      <input
+                        type="radio"
+                        id="billingDifferent"
+                        name="billingAddress"
+                        value="different"
+                        required
+                      />
+                      <div class="radio-checkmark"></div>
+                      <strong
+                        ><i class="fas fa-map-marked-alt me-2 text-primary"></i
+                        >Use different billing address</strong
+                      >
+                      <p class="text-muted mb-0 mt-1">
+                        Provide a separate billing address
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Different Billing Address Form -->
+                  <div
+                    id="billingAddressForm"
+                    class="billing-address-form glass-card p-4"
+                  >
+                    <h5 class="mb-4 text-primary">
+                      <i class="fas fa-home me-2"></i>Billing Address Details
+                    </h5>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="billingFirstName"
+                            name="billingFname"
+                            placeholder="First Name"
+                          />
+                          <label for="billingFirstName">First Name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="billingLastName"
+                            name="billingLname"
+                            placeholder="Last Name"
+                          />
+                          <label for="billingLastName">Last Name</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input
+                            type="tel"
+                            class="form-control"
+                            id="billingPhone"
+                            name="billingPhone"
+                            placeholder="Phone Number"
+                          />
+                          <label for="billingPhone">Phone Number</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input
+                            type="tel"
+                            class="form-control"
+                            id="billingAlternatePhone"
+                            name="billingPhone2"
+                            placeholder="Alternate Phone"
+                          />
+                          <label for="billingAlternatePhone"
+                            >Alternate Phone (Optional)</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="billingAddress"
+                        name="billingAddress"
+                        placeholder="Full Address"
+                      />
+                      <label for="billingAddress">Full Address</label>
+                    </div>
+
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="billingAddress2"
+                        name="billingAddress2"
+                        placeholder="Address Line 2"
+                      />
+                      <label for="billingAddress2"
+                        >Address Line 2 (Optional)</label
+                      >
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-floating">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="billingCity"
+                            name="billingCity"
+                            placeholder="City"
+                          />
+                          <label for="billingCity">City</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-floating">
+                          <select
+                            class="form-select"
+                            id="billingState"
+                            name="billingState"
+                          >
+                            <option value="">Select State</option>
+                            <option value="AN">
+                              Andaman and Nicobar Islands
+                            </option>
+                            <option value="AP">Andhra Pradesh</option>
+                            <option value="AR">Arunachal Pradesh</option>
+                            <option value="AS">Assam</option>
+                            <option value="BR">Bihar</option>
+                            <option value="CH">Chandigarh</option>
+                            <option value="CT">Chhattisgarh</option>
+                            <option value="DN">Dadra and Nagar Haveli</option>
+                            <option value="DD">Daman and Diu</option>
+                            <option value="DL">Delhi</option>
+                            <option value="GA">Goa</option>
+                            <option value="GJ">Gujarat</option>
+                            <option value="HR">Haryana</option>
+                            <option value="HP">Himachal Pradesh</option>
+                            <option value="JK">Jammu and Kashmir</option>
+                            <option value="JH">Jharkhand</option>
+                            <option value="KA">Karnataka</option>
+                            <option value="KL">Kerala</option>
+                            <option value="LA">Ladakh</option>
+                            <option value="LD">Lakshadweep</option>
+                            <option value="MP">Madhya Pradesh</option>
+                            <option value="MH">Maharashtra</option>
+                            <option value="MN">Manipur</option>
+                            <option value="ML">Meghalaya</option>
+                            <option value="MZ">Mizoram</option>
+                            <option value="NL">Nagaland</option>
+                            <option value="OR">Odisha</option>
+                            <option value="PY">Puducherry</option>
+                            <option value="PB">Punjab</option>
+                            <option value="RJ">Rajasthan</option>
+                            <option value="SK">Sikkim</option>
+                            <option value="TN">Tamil Nadu</option>
+                            <option value="TG">Telangana</option>
+                            <option value="TR">Tripura</option>
+                            <option value="UP">Uttar Pradesh</option>
+                            <option value="UT">Uttarakhand</option>
+                            <option value="WB">West Bengal</option>
+                          </select>
+                          <label for="billingState">Select State</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-floating">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="billingZipcode"
+                            name="billingZipcode"
+                            placeholder="Zip Code"
+                          />
+                          <label for="billingZipcode">Zip Code</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="billingLandmarks"
+                        name="billingLandmarks"
+                        placeholder="Landmarks"
+                      />
+                      <label for="billingLandmarks">Landmarks (Optional)</label>
+                    </div>
+                  </div>
+
+                  <!-- Payment Method Section -->
+                  <div class="section-header">
+                    <i class="fas fa-wallet"></i>
+                    <h4>Choose Payment Method</h4>
+                  </div>
+
+                  <div class="custom-radio-group">
+                    <div
+                      class="custom-radio-item active"
+                      onclick="selectPaymentOption('cod')"
+                    >
+                      <input
+                        type="radio"
+                        id="paymentCod"
+                        name="paymentMethod"
+                        value="cod"
+                        checked
+                        required
+                      />
+                      <div class="radio-checkmark"></div>
+                      <strong
+                        ><i class="fas fa-money-bill-wave me-2 text-success"></i
+                        >Cash on Delivery</strong
+                      >
+                      <p class="text-muted mb-0 mt-1">
+                        Pay when your order arrives
+                      </p>
+                    </div>
+                    <div
+                      class="custom-radio-item"
+                      onclick="selectPaymentOption('online')"
+                    >
+                      <input
+                        type="radio"
+                        id="paymentOnline"
+                        name="paymentMethod"
+                        value="online"
+                        required
+                      />
+                      <div class="radio-checkmark"></div>
+                      <strong
+                        ><i class="fas fa-credit-card me-2 text-primary"></i
+                        >Online Payment</strong
+                      >
+                      <p class="text-muted mb-0 mt-1">
+                        Pay securely with card or UPI
+                      </p>
+                    </div>
+                  </div>
+
+                  <button class="checkout-btn" type="submit">
+                    <i class="fas fa-lock me-2"></i>Complete Secure Checkout
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br />
+    </main>
+    <!-- main-area-end -->
+
+    <!-- footer-area -->
+    <footer>
+      <div class="footer__area">
+        <div class="footer__newsletter-three">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-5">
+                <div class="footer__newsletter-content">
+                  <h2 class="title">Sign Up For Newsletter!</h2>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <form action="#" class="footer__newsletter-form-two">
+                  <input type="email" placeholder="Type Your E-mail" />
+                  <button type="submit">
+                    Subscribe
+                    <img
+                      src="assets/img/icon/right_arrow04.svg"
+                      alt=""
+                      class="injectable"
+                    />
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__top footer__top-three fix">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="footer__widget">
+                  <div class="footer__logo">
+                    <a href=""><img src="assets/img/logo/logo.png" alt="" /></a>
+                  </div>
+                  <div class="footer__content footer__content-two">
+                    <p>Pet4fun Short Descriptions</p>
+                  </div>
+                  <div class="footer__social">
+                    <h6 class="title">Follow Us On:</h6>
+                    <ul class="list-wrap">
+                      <li>
+                        <a href="https://www.facebook.com/" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://twitter.com/" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.whatsapp.com/" target="_blank"
+                          ><i class="fab fa-whatsapp"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/" target="_blank"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Quick Links</h4>
+                  <div class="footer__link">
+                    <ul class="list-wrap">
+                      <li><a href="">Animal Rescue</a></li>
+                      <li><a href="">Humane Education</a></li>
+                      <li><a href="">Caregivers</a></li>
+                      <li><a href="">New & Blog</a></li>
+                      <li><a href="">Gallery</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Support</h4>
+                  <div class="footer__link">
+                    <ul class="list-wrap">
+                      <li><a href="">About us</a></li>
+                      <li><a href="">Contact us</a></li>
+                      <li><a href="">Book Appointment</a></li>
+                      <li><a href="">FAQ</a></li>
+                      <li><a href="">Locations</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Contact</h4>
+                  <div class="footer__contact">
+                    <ul class="list-wrap">
+                      <li>Kolkata, West Bengal, India</li>
+                      <li><a href="tel:0123456789">+91 9876543210</a></li>
+                      <li>
+                        <a href="mailto:petshop@gmail.com">petshop@gmail.com</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__shape-wrap">
+            <img
+              src="assets/img/images/footer_shape01.png"
+              alt="img"
+              data-aos="fade-up-right"
+              data-aos-delay="400"
+            />
+            <img
+              src="assets/img/images/footer_shape02.png"
+              alt="img"
+              data-aos="fade-up-left"
+              data-aos-delay="400"
+            />
+          </div>
+        </div>
+        <div class="footer__bottom footer__bottom-two">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-5">
+                <div class="copyright-text copyright-text-three">
+                  <p>Copyright © 2025. All Rights Reserved.</p>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="footer__bottom-menu footer__bottom-menu-two">
+                  <ul class="list-wrap">
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Career</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer-area-end -->
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.odometer.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/svg-inject.min.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/ajax-form.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      SVGInject(document.querySelectorAll("img.injectable"));
+    </script>
+    <script>
+      // Form validation
+      (function () {
+        "use strict";
+        window.addEventListener(
+          "load",
+          function () {
+            var forms = document.getElementsByClassName("needs-validation");
+            var validation = Array.prototype.filter.call(
+              forms,
+              function (form) {
+                form.addEventListener(
+                  "submit",
+                  function (event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    } else {
+                      event.preventDefault();
+                      showSuccessMessage();
+                    }
+                    form.classList.add("was-validated");
+                  },
+                  false
+                );
+              }
+            );
+          },
+          false
+        );
+      })();
+
+      // Billing address toggle functionality
+      function selectBillingOption(option) {
+        const items = document.querySelectorAll(
+          ".custom-radio-group .custom-radio-item"
+        );
+        const billingForm = document.getElementById("billingAddressForm");
+        const billingInputs = billingForm.querySelectorAll("input, select");
+
+        // Remove active class from all items
+        items.forEach((item) => item.classList.remove("active"));
+
+        if (option === "same") {
+          document.getElementById("billingSame").checked = true;
+          document
+            .querySelector("[onclick=\"selectBillingOption('same')\"]")
+            .classList.add("active");
+          billingForm.classList.remove("show");
+          // Remove required attribute from billing inputs
+          billingInputs.forEach((input) => {
+            if (input.type !== "checkbox" && input.type !== "radio") {
+              input.removeAttribute("required");
+            }
+          });
+        } else {
+          document.getElementById("billingDifferent").checked = true;
+          document
+            .querySelector("[onclick=\"selectBillingOption('different')\"]")
+            .classList.add("active");
+          billingForm.classList.add("show", "fade-in");
+          // Add required attribute to essential billing inputs
+          const requiredFields = [
+            "billingFirstName",
+            "billingLastName",
+            "billingPhone",
+            "billingAddress",
+            "billingCity",
+            "billingState",
+            "billingZipcode",
+          ];
+          requiredFields.forEach((fieldId) => {
+            const field = document.getElementById(fieldId);
+            if (field) field.setAttribute("required", "required");
+          });
+        }
+      }
+
+      // Payment method toggle functionality
+      function selectPaymentOption(option) {
+        const items = document.querySelectorAll(
+          ".custom-radio-group .custom-radio-item"
+        );
+
+        // Remove active class from payment items
+        items.forEach((item) => {
+          if (
+            item.onclick &&
+            item.onclick.toString().includes("selectPaymentOption")
+          ) {
+            item.classList.remove("active");
+          }
+        });
+
+        if (option === "cod") {
+          document.getElementById("paymentCod").checked = true;
+          document
+            .querySelector("[onclick=\"selectPaymentOption('cod')\"]")
+            .classList.add("active");
+        } else {
+          document.getElementById("paymentOnline").checked = true;
+          document
+            .querySelector("[onclick=\"selectPaymentOption('online')\"]")
+            .classList.add("active");
+        }
+      }
+
+      // Success message
+      function showSuccessMessage() {
+        const container = document.querySelector(".container");
+        const successMessage = document.createElement("div");
+        successMessage.className =
+          "alert alert-success alert-dismissible fade show glass-card mt-4";
+        successMessage.innerHTML = `
+                <div class="text-center">
+                    <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                    <h4 class="mt-3 mb-2">Order Placed Successfully!</h4>
+                    <p class="mb-3">Thank you for your purchase. Your order will be processed shortly.</p>
+                    <button type="button" class="btn btn-success" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-times me-1"></i> Close
+                    </button>
+                </div>
+            `;
+        container.appendChild(successMessage);
+
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: "smooth" });
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+          if (successMessage.parentElement) {
+            successMessage.remove();
+          }
+        }, 5000);
+      }
+
+      // Add interactive effects to form inputs
+      document.addEventListener("DOMContentLoaded", function () {
+        const inputs = document.querySelectorAll(".form-control, .form-select");
+
+        inputs.forEach((input) => {
+          input.addEventListener("focus", function () {
+            this.parentElement.style.transform = "scale(1.02)";
+            this.parentElement.style.transition = "transform 0.2s ease";
+          });
+
+          input.addEventListener("blur", function () {
+            this.parentElement.style.transform = "scale(1)";
+          });
+        });
+
+        // Add hover effects to cart items
+        const cartItems = document.querySelectorAll(".cart-item");
+        cartItems.forEach((item) => {
+          item.addEventListener("mouseenter", function () {
+            this.style.transform = "translateX(10px)";
+          });
+
+          item.addEventListener("mouseleave", function () {
+            this.style.transform = "translateX(0)";
+          });
+        });
+
+        // Initialize tooltips if needed
+        const tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      });
+
+      // Add loading animation to checkout button
+      document
+        .querySelector(".checkout-btn")
+        .addEventListener("click", function (e) {
+          if (document.querySelector(".needs-validation").checkValidity()) {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML =
+              '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            }, 2000);
+          }
+        });
+
+      // Smooth scroll for better UX
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Add real-time validation feedback
+      document
+        .querySelectorAll(".form-control, .form-select")
+        .forEach((input) => {
+          input.addEventListener("input", function () {
+            if (this.checkValidity()) {
+              this.classList.remove("is-invalid");
+              this.classList.add("is-valid");
+            } else {
+              this.classList.remove("is-valid");
+              if (this.value.length > 0) {
+                this.classList.add("is-invalid");
+              }
+            }
+          });
+        });
+
+      // Phone number formatting
+      document.querySelectorAll('input[type="tel"]').forEach((input) => {
+        input.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
+          if (value.length > 10) {
+            value = value.slice(0, 10);
+          }
+          e.target.value = value;
+        });
+      });
+
+      // Auto-capitalize names
+      document
+        .querySelectorAll(
+          "#firstName, #lastName, #billingFirstName, #billingLastName, #city, #billingCity"
+        )
+        .forEach((input) => {
+          input.addEventListener("input", function (e) {
+            const words = e.target.value.split(" ");
+            const capitalizedWords = words.map(
+              (word) =>
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            );
+            e.target.value = capitalizedWords.join(" ");
+          });
+        });
+
+      // Zipcode validation
+      document
+        .querySelectorAll("#zipcode, #billingZipcode")
+        .forEach((input) => {
+          input.addEventListener("input", function (e) {
+            let value = e.target.value.replace(/\D/g, "");
+            if (value.length > 6) {
+              value = value.slice(0, 6);
+            }
+            e.target.value = value;
+          });
+        });
+    </script>
+  </body>
+</html>
