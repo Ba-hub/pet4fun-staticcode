@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Pet4fun</title>
+    <meta name="description" content="pet4fun" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/flaticon_pet_care.css" />
+    <link rel="stylesheet" href="assets/css/odometer.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/default.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      .tracking-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .header {
+        background: #4f46e5;
+        color: white;
+        padding: 24px;
+      }
+
+      .tracking-number {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .tracking-note {
+        opacity: 0.9;
+        font-size: 14px;
+      }
+
+      .product-section {
+        padding: 24px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .product-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .product-image {
+        width: 60px;
+        height: 60px;
+        background: #1a202c;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .product-details h6 {
+        margin: 0 0 4px 0;
+        font-weight: 600;
+        color: #1a202c;
+      }
+
+      .product-price {
+        color: #059669;
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .timeline-section {
+        padding: 24px 24px;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e2e8f0;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 24px;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -26px;
+        top: 2px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        border: 2px solid white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-dot.completed {
+        background: #10b981;
+        color: white;
+      }
+
+      .timeline-dot.active {
+        background: #3b82f6;
+        color: white;
+      }
+
+      .timeline-dot.pending {
+        background: #f1f5f9;
+        color: #64748b;
+        border-color: #e2e8f0;
+      }
+
+      .timeline-content h6 {
+        margin: 0 0 4px 0;
+        font-weight: 600;
+        color: #1a202c;
+      }
+
+      .timeline-date {
+        color: #64748b;
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+
+      .timeline-desc {
+        color: #4a5568;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .details-section {
+        padding: 24px;
+        background: #fafbfc;
+      }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+
+      .detail-group h6 {
+        color: #374151;
+        font-weight: 600;
+        margin-bottom: 16px;
+        font-size: 16px;
+      }
+
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+
+      .detail-label {
+        color: #6b7280;
+        min-width: 120px;
+      }
+
+      .detail-value {
+        color: #374151;
+        font-weight: 500;
+        text-align: right;
+        flex: 1;
+      }
+
+      .detail-value.success {
+        color: #059669;
+      }
+
+      .detail-value.total {
+        font-weight: 700;
+        color: #1a202c;
+        font-size: 16px;
+      }
+
+      .download-btn {
+        background: #4f46e5;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .download-btn:hover {
+        background: #4338ca;
+        color: white;
+      }
+
+      .offers-section {
+        padding: 16px 24px;
+        background: #f0f9ff;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      .offer-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #0369a1;
+        margin-bottom: 8px;
+      }
+
+      .offer-item:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px auto;
+          padding: 0 16px;
+        }
+
+        .header {
+          padding: 20px;
+        }
+
+        .product-section,
+        .timeline-section {
+          padding: 16px;
+        }
+
+        .details-section {
+          padding: 20px;
+        }
+
+        .details-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .timeline {
+          padding-left: 28px;
+        }
+
+        .detail-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+        }
+
+        .detail-value {
+          text-align: left;
+        }
+      }
+
+      /* Simple fade-in animation */
+      .tracking-card {
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .order-tracks {
+        padding: 20px 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--Preloader-->
+    <div id="preloader">
+      <div id="loader" class="loader">
+        <div class="loader-container">
+          <div class="loader-icon">
+            <img src="assets/img/logo/preloader.svg" alt="Preloader" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Preloader-end -->
+
+    <!-- Scroll-top -->
+    <button class="scroll__top scroll-to-target" data-target="html">
+      <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+
+    <!-- header-area -->
+    <header>
+      <div id="header-fixed-height"></div>
+      <div class="tg-header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-8">
+              <ul class="tg-header__top-info left-side list-wrap">
+                <li><i class="flaticon-placeholder"></i>Kolkata, India</li>
+                <li>
+                  <i class="flaticon-mail"></i
+                  ><a href="mailto:Petspostinfo@gmail.com">pet4fun@gmail.com</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-6 col-lg-4">
+              <ul class="tg-header__top-right list-wrap">
+                <li>
+                  <i class="flaticon-phone"></i>Need help? Call Us:
+                  <a href="tel:0123456789">+91 9876543210</a>
+                </li>
+                <li class="tg-header__top-social">
+                  <ul class="list-wrap">
+                    <li>
+                      <a href="https://www.facebook.com/" target="_blank"
+                        ><i class="fab fa-facebook-f"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/" target="_blank"
+                        ><i class="fab fa-twitter"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.whatsapp.com/" target="_blank"
+                        ><i class="fab fa-whatsapp"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.youtube.com/" target="_blank"
+                        ><i class="fab fa-youtube"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sticky-header" class="tg-header__area tg-header__area-four">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="tgmenu__wrap">
+                <nav class="tgmenu__nav">
+                  <div class="logo">
+                    <a href=""><img src="assets/img/logo/logo.png" alt="" /></a>
+                  </div>
+                  <div
+                    class="tgmenu__navbar-wrap tgmenu__navbar-wrap-two tgmenu__main-menu d-none d-xl-flex"
+                  >
+                    <ul class="navigation">
+                      <li><a href="">Home</a></li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Shop</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Our Shop</a></li>
+                          <li><a href="">Offers</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Dogs</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Dogs1</a></li>
+                          <li><a href="">Dogs2</a></li>
+                          <li><a href="">Dogs3</a></li>
+                          <li><a href="">Dogs4</a></li>
+                          <li><a href="">Dogs5</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Cats</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Cats1</a></li>
+                          <li><a href="">Cats2</a></li>
+                          <li><a href="">Cats3</a></li>
+                          <li><a href="">Cats4</a></li>
+                          <li><a href="">Cats5</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="">pet4fun clinic</a></li>
+                      <li><a href="">contacts</a></li>
+                    </ul>
+                  </div>
+                  <div class="tgmenu__search">
+                    <form action="#" class="tgmenu__search-form">
+                      <input type="text" placeholder="Search Here . . ." />
+                      <div class="select-grp">
+                        <select
+                          class="form-select"
+                          id="course-cat"
+                          aria-label="Default select example"
+                          style="width: 130px"
+                        >
+                          <option selected disabled>All Categories</option>
+                          <option value="1">Dogs</option>
+                          <option value="2">Cats</option>
+                          <option value="3">Bull Dog</option>
+                          <option value="4">Others</option>
+                        </select>
+                      </div>
+                      <button type="submit">
+                        <i class="flaticon-loupe"></i>
+                      </button>
+                    </form>
+                  </div>
+                  <div class="tgmenu__action tgmenu__action-three d-md-block">
+                    <ul class="list-wrap">
+                      <li class="header-login">
+                        <a href="">
+                          <i class="flaticon-user"></i>
+                        </a>
+                      </li>
+                      <li class="header-wishlist">
+                        <a href="javascript:void(0)">
+                          <i class="flaticon-love"></i>
+                        </a>
+                      </li>
+                      <li class="header-cart header-cart-two">
+                        <a href="javascript:void(0)">
+                          <i class="flaticon-shopping-bag"></i>
+                          <span>0</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mobile-nav-toggler">
+                    <i class="flaticon-layout"></i>
+                  </div>
+                </nav>
+              </div>
+
+              <!-- Mobile Menu  -->
+              <div class="tgmobile__menu">
+                <nav class="tgmobile__menu-box">
+                  <div class="close-btn"><i class="fas fa-times"></i></div>
+                  <div class="nav-logo">
+                    <a href="">Pet4fun Logo</a>
+                  </div>
+                  <div class="tgmobile__search">
+                    <form action="#">
+                      <input type="text" placeholder="Search here..." />
+                      <button><i class="fas fa-search"></i></button>
+                    </form>
+                  </div>
+                  <div class="tgmobile__menu-outer"></div>
+                  <div class="social-links">
+                    <ul class="list-wrap">
+                      <li>
+                        <a href="https://www.facebook.com/" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://twitter.com/" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.whatsapp.com/" target="_blank"
+                          ><i class="fab fa-whatsapp"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/" target="_blank"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+              <div class="tgmobile__menu-backdrop"></div>
+              <!-- End Mobile Menu -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header-area-end -->
+
+    <!-- main-area -->
+    <main class="fix">
+      <!-- breadcrumb-area -->
+      <section class="breadcrumb__area fix">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-8">
+              <div class="breadcrumb__content">
+                <h3 class="title">Order Details</h3>
+                <nav class="breadcrumb">
+                  <span property="itemListElement" typeof="ListItem">
+                    <a href="">Home</a>
+                  </span>
+                  <span class="breadcrumb-separator"
+                    ><i class="flaticon-right-arrow-angle"></i
+                  ></span>
+                  <span property="itemListElement" typeof="ListItem"
+                    >POCO M6 Plus 5G</span
+                  >
+                </nav>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="breadcrumb__img">
+                <img
+                  src="assets/img/images/breadcrumb_img.png"
+                  alt="img"
+                  data-aos="fade-left"
+                  data-aos-delay="800"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="breadcrumb__shape-wrap">
+          <img
+            src="assets/img/images/breadcrumb_shape01.png"
+            alt="img"
+            data-aos="fade-down-right"
+            data-aos-delay="400"
+          />
+          <img
+            src="assets/img/images/breadcrumb_shape02.png"
+            alt="img"
+            data-aos="fade-up-left"
+            data-aos-delay="400"
+          />
+        </div>
+      </section>
+      <!-- breadcrumb-area-end -->
+
+      <!-- contact-area -->
+      <section class="order-tracks">
+        <div class="container">
+          <div class="tracking-card">
+            <!-- Header -->
+            <div class="header">
+              <div class="tracking-number">Order Id: #B653986718</div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-section">
+              <div class="product-info">
+                <div class="product-image"><img src="https://rukminim1.flixcart.com/image/100/80/xif0q/mobile/i/w/k/-original-imah3afnzmgfjnrf.jpeg"></div>
+                <div class="product-details">
+                  <h6>POCO M6 Plus 5G</h6>
+                  <div
+                    style="color: #64748b; font-size: 14px; margin-bottom: 4px"
+                  >
+                    Graphite Black, 128 GB
+                  </div>
+                  <div class="product-price">₹11,058</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-section">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot completed">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h6>Order Confirmed</h6>
+                    <div class="timeline-date">Oct 06, 2024</div>
+                    <div class="timeline-desc">
+                      Your order has been confirmed and is being prepared.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot completed">
+                    <i class="fas fa-truck"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h6>Out for Delivery</h6>
+                    <div class="timeline-date">Oct 14, 2024</div>
+                    <div class="timeline-desc">
+                      Your package is on the way to your address.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot active">
+                    <i class="fas fa-home"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h6>Delivered</h6>
+                    <div class="timeline-date">Oct 14, 2024</div>
+                    <div class="timeline-desc">
+                      Package delivered successfully to your address.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Details -->
+            <div class="details-section">
+              <div class="details-grid">
+                <div class="detail-group">
+                  <h6>Price Details</h6>
+                  <div class="detail-item">
+                    <span class="detail-label">List Price</span>
+                    <span class="detail-value">₹15,999</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Selling Price</span>
+                    <span class="detail-value">₹15,999</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Extra Discount</span>
+                    <span class="detail-value success">-₹4,500</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Special Price</span>
+                    <span class="detail-value">₹11,499</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Delivery Charge</span>
+                    <span class="detail-value success">Free</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Packaging Fee</span>
+                    <span class="detail-value">₹59</span>
+                  </div>
+                  <div
+                    class="detail-item"
+                    style="
+                      border-top: 1px solid #e2e8f0;
+                      margin-top: 8px;
+                      padding-top: 12px;
+                    "
+                  >
+                    <span class="detail-label" style="font-weight: 600"
+                      >Total Amount</span
+                    >
+                    <span class="detail-value total">₹11,058</span>
+                  </div>
+                </div>
+
+                <div class="detail-group">
+                  <h6>Delivery Details</h6>
+                  <div class="detail-item">
+                    <span class="detail-label">Customer</span>
+                    <span class="detail-value">Surojit Das</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Address</span>
+                    <span class="detail-value">Tarakeswar, Hooghly</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">District</span>
+                    <span class="detail-value">Hugli District</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">PIN Code</span>
+                    <span class="detail-value">712410</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Phone</span>
+                    <span class="detail-value">9933682774</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Payment</span>
+                    <span class="detail-value">Cash on Delivery</span>
+                  </div>
+                  <div
+                    class="detail-item"
+                    style="
+                      border-top: 1px solid #e2e8f0;
+                      margin-top: 8px;
+                      padding-top: 12px;
+                    "
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- contact-area-end -->
+    </main>
+    <!-- main-area-end -->
+
+    <!-- footer-area -->
+    <footer>
+      <div class="footer__area">
+        <div class="footer__newsletter-three">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-5">
+                <div class="footer__newsletter-content">
+                  <h2 class="title">Sign Up For Newsletter!</h2>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <form action="#" class="footer__newsletter-form-two">
+                  <input type="email" placeholder="Type Your E-mail" />
+                  <button type="submit">
+                    Subscribe
+                    <img
+                      src="assets/img/icon/right_arrow04.svg"
+                      alt=""
+                      class="injectable"
+                    />
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__top footer__top-three fix">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="footer__widget">
+                  <div class="footer__logo">
+                    <a href=""><img src="assets/img/logo/logo.png" alt="" /></a>
+                  </div>
+                  <div class="footer__content footer__content-two">
+                    <p>Pet4fun Short Descriptions</p>
+                  </div>
+                  <div class="footer__social">
+                    <h6 class="title">Follow Us On:</h6>
+                    <ul class="list-wrap">
+                      <li>
+                        <a href="https://www.facebook.com/" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://twitter.com/" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.whatsapp.com/" target="_blank"
+                          ><i class="fab fa-whatsapp"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/" target="_blank"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Quick Links</h4>
+                  <div class="footer__link">
+                    <ul class="list-wrap">
+                      <li><a href="">Animal Rescue</a></li>
+                      <li><a href="">Humane Education</a></li>
+                      <li><a href="">Caregivers</a></li>
+                      <li><a href="">New & Blog</a></li>
+                      <li><a href="">Gallery</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Support</h4>
+                  <div class="footer__link">
+                    <ul class="list-wrap">
+                      <li><a href="">About us</a></li>
+                      <li><a href="">Contact us</a></li>
+                      <li><a href="">Book Appointment</a></li>
+                      <li><a href="">FAQ</a></li>
+                      <li><a href="">Locations</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Contact</h4>
+                  <div class="footer__contact">
+                    <ul class="list-wrap">
+                      <li>Kolkata, West Bengal, India</li>
+                      <li><a href="tel:0123456789">+91 9876543210</a></li>
+                      <li>
+                        <a href="mailto:petshop@gmail.com">petshop@gmail.com</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__shape-wrap">
+            <img
+              src="assets/img/images/footer_shape01.png"
+              alt="img"
+              data-aos="fade-up-right"
+              data-aos-delay="400"
+            />
+            <img
+              src="assets/img/images/footer_shape02.png"
+              alt="img"
+              data-aos="fade-up-left"
+              data-aos-delay="400"
+            />
+          </div>
+        </div>
+        <div class="footer__bottom footer__bottom-two">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-5">
+                <div class="copyright-text copyright-text-three">
+                  <p>Copyright © 2025. All Rights Reserved.</p>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="footer__bottom-menu footer__bottom-menu-two">
+                  <ul class="list-wrap">
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Career</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer-area-end -->
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.odometer.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/svg-inject.min.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/ajax-form.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      SVGInject(document.querySelectorAll("img.injectable"));
+    </script>
+  </body>
+</html>
