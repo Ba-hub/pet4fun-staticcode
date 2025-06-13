@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Pet4fun</title>
+    <meta name="description" content="pet4fun" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="assets/css/flaticon_pet_care.css" />
+    <link rel="stylesheet" href="assets/css/odometer.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/default.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      :root {
+        --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        --secondary-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        --glass-bg: rgba(255, 255, 255, 0.95);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.15),
+          0 8px 12px -4px rgba(0, 0, 0, 0.1);
+      }
+
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+        transition: all 0.3s ease;
+      }
+
+      .glass-card:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-2px);
+      }
+
+      .form-section {
+        animation: fadeInLeft 0.8s ease 0.4s both;
+      }
+
+      .form-floating {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .form-floating input,
+      .form-floating select {
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        padding: 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .form-floating input:focus,
+      .form-floating select:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        background: white;
+      }
+
+      .form-floating label {
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        margin: 3rem 0 2rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      .section-header:first-child {
+        margin-top: 0;
+      }
+
+      .section-header i {
+        background: var(--primary-gradient);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      .section-header h4 {
+        margin: 0;
+        color: #1e293b;
+        font-weight: 700;
+      }
+
+      .custom-radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 2rem 0 3rem 0;
+      }
+
+      .custom-radio-item {
+        position: relative;
+        padding: 1.5rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .custom-radio-item:hover {
+        border-color: #6366f1;
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .custom-radio-item.active {
+        border-color: #6366f1;
+        background: rgba(99, 102, 241, 0.1);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+      }
+
+      .custom-radio-item input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .radio-checkmark {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #cbd5e1;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .custom-radio-item.active .radio-checkmark {
+        border-color: #6366f1;
+        background: #6366f1;
+      }
+
+      .custom-radio-item.active .radio-checkmark::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: white;
+      }
+
+      .checkout-btn {
+        background: var(--primary-gradient);
+        border: none;
+        padding: 1rem 3rem;
+        border-radius: 50px;
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+        width: 100%;
+        margin-top: 3rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .checkout-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .delv-address {
+        padding: 20px 0;
+      }
+
+      .checkout-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .checkout-btn:hover::before {
+        left: 100%;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          max-height: 0;
+          opacity: 0;
+        }
+        to {
+          max-height: 2000px;
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .glass-card {
+          border-radius: 15px;
+          margin-bottom: 2rem;
+        }
+
+        .custom-radio-item {
+          padding: 1rem;
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--Preloader-->
+    <div id="preloader">
+      <div id="loader" class="loader">
+        <div class="loader-container">
+          <div class="loader-icon">
+            <img src="assets/img/logo/preloader.svg" alt="Preloader" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Preloader-end -->
+
+    <!-- Scroll-top -->
+    <button class="scroll__top scroll-to-target" data-target="html">
+      <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+
+    <!-- header-area -->
+    <header>
+      <div id="header-fixed-height"></div>
+      <div class="tg-header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-8">
+              <ul class="tg-header__top-info left-side list-wrap">
+                <li><i class="flaticon-placeholder"></i>Kolkata, India</li>
+                <li>
+                  <i class="flaticon-mail"></i
+                  ><a href="mailto:Petspostinfo@gmail.com">pet4fun@gmail.com</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-6 col-lg-4">
+              <ul class="tg-header__top-right list-wrap">
+                <li>
+                  <i class="flaticon-phone"></i>Need help? Call Us:
+                  <a href="tel:0123456789">+91 9876543210</a>
+                </li>
+                <li class="tg-header__top-social">
+                  <ul class="list-wrap">
+                    <li>
+                      <a href="https://www.facebook.com/" target="_blank"
+                        ><i class="fab fa-facebook-f"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/" target="_blank"
+                        ><i class="fab fa-twitter"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.whatsapp.com/" target="_blank"
+                        ><i class="fab fa-whatsapp"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.youtube.com/" target="_blank"
+                        ><i class="fab fa-youtube"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sticky-header" class="tg-header__area tg-header__area-four">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="tgmenu__wrap">
+                <nav class="tgmenu__nav">
+                  <div class="logo">
+                    <a href=""><img src="assets/img/logo/logo.png" alt="" /></a>
+                  </div>
+                  <div
+                    class="tgmenu__navbar-wrap tgmenu__navbar-wrap-two tgmenu__main-menu d-none d-xl-flex"
+                  >
+                    <ul class="navigation">
+                      <li><a href="">Home</a></li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Shop</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Our Shop</a></li>
+                          <li><a href="">Offers</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Dogs</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Dogs1</a></li>
+                          <li><a href="">Dogs2</a></li>
+                          <li><a href="">Dogs3</a></li>
+                          <li><a href="">Dogs4</a></li>
+                          <li><a href="">Dogs5</a></li>
+                        </ul>
+                      </li>
+                      <li class="menu-item-has-children">
+                        <a href="#">Cats</a>
+                        <ul class="sub-menu">
+                          <li><a href="">Cats1</a></li>
+                          <li><a href="">Cats2</a></li>
+                          <li><a href="">Cats3</a></li>
+                          <li><a href="">Cats4</a></li>
+                          <li><a href="">Cats5</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="">pet4fun clinic</a></li>
+                      <li><a href="">contacts</a></li>
+                    </ul>
+                  </div>
+                  <div class="tgmenu__search">
+                    <form action="#" class="tgmenu__search-form">
+                      <input type="text" placeholder="Search Here . . ." />
+                      <div class="select-grp">
+                        <select
+                          class="form-select"
+                          id="course-cat"
+                          aria-label="Default select example"
+                          style="width: 130px"
+                        >
+                          <option selected disabled>All Categories</option>
+                          <option value="1">Dogs</option>
+                          <option value="2">Cats</option>
+                          <option value="3">Bull Dog</option>
+                          <option value="4">Others</option>
+                        </select>
+                      </div>
+                      <button type="submit">
+                        <i class="flaticon-loupe"></i>
+                      </button>
+                    </form>
+                  </div>
+                  <div class="tgmenu__action tgmenu__action-three d-md-block">
+                    <ul class="list-wrap">
+                      <li class="header-login">
+                        <a href="">
+                          <i class="flaticon-user"></i>
+                        </a>
+                      </li>
+                      <li class="header-wishlist">
+                        <a href="javascript:void(0)">
+                          <i class="flaticon-love"></i>
+                        </a>
+                      </li>
+                      <li class="header-cart header-cart-two">
+                        <a href="javascript:void(0)">
+                          <i class="flaticon-shopping-bag"></i>
+                          <span>0</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mobile-nav-toggler">
+                    <i class="flaticon-layout"></i>
+                  </div>
+                </nav>
+              </div>
+
+              <!-- Mobile Menu  -->
+              <div class="tgmobile__menu">
+                <nav class="tgmobile__menu-box">
+                  <div class="close-btn"><i class="fas fa-times"></i></div>
+                  <div class="nav-logo">
+                    <a href="">Pet4fun Logo</a>
+                  </div>
+                  <div class="tgmobile__search">
+                    <form action="#">
+                      <input type="text" placeholder="Search here..." />
+                      <button><i class="fas fa-search"></i></button>
+                    </form>
+                  </div>
+                  <div class="tgmobile__menu-outer"></div>
+                  <div class="social-links">
+                    <ul class="list-wrap">
+                      <li>
+                        <a href="https://www.facebook.com/" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://twitter.com/" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.whatsapp.com/" target="_blank"
+                          ><i class="fab fa-whatsapp"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/" target="_blank"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+              <div class="tgmobile__menu-backdrop"></div>
+              <!-- End Mobile Menu -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header-area-end -->
+
+    <!-- main-area -->
+    <main class="fix">
+      <!-- breadcrumb-area -->
+      <section class="breadcrumb__area fix">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-8">
+              <div class="breadcrumb__content">
+                <h3 class="title">Delivery Address</h3>
+                <nav class="breadcrumb">
+                  <span property="itemListElement" typeof="ListItem">
+                    <a href="">Home</a>
+                  </span>
+                  <span class="breadcrumb-separator"
+                    ><i class="flaticon-right-arrow-angle"></i
+                  ></span>
+                  <span property="itemListElement" typeof="ListItem"
+                    >Delivery Address</span
+                  >
+                </nav>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="breadcrumb__img">
+                <img
+                  src="assets/img/images/breadcrumb_img.png"
+                  alt="img"
+                  data-aos="fade-left"
+                  data-aos-delay="800"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="breadcrumb__shape-wrap">
+          <img
+            src="assets/img/images/breadcrumb_shape01.png"
+            alt="img"
+            data-aos="fade-down-right"
+            data-aos-delay="400"
+          />
+          <img
+            src="assets/img/images/breadcrumb_shape02.png"
+            alt="img"
+            data-aos="fade-up-left"
+            data-aos-delay="400"
+          />
+        </div>
+      </section>
+      <!-- breadcrumb-area-end -->
+
+      <!-- contact-area -->
+      <section class="delv-address">
+        <div class="container">
+          <form class="needs-validation" novalidate>
+            <!-- Delivery Address Section -->
+            <div class="section-header">
+              <i class="fas fa-map-marker-alt"></i>
+              <h4>Delivery Address</h4>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    name="fname"
+                    placeholder="First Name"
+                    required
+                  />
+                  <label for="firstName">First Name</label>
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    name="lname"
+                    placeholder="Last Name"
+                    required
+                  />
+                  <label for="lastName">Last Name</label>
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phoneNumber"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                  />
+                  <label for="phoneNumber">Phone Number</label>
+                  <div class="invalid-feedback">
+                    Valid phone number is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="alternatePhone"
+                    name="phone2"
+                    placeholder="Alternate Phone"
+                  />
+                  <label for="alternatePhone">Alternate Phone (Optional)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+                placeholder="Full Address"
+                required
+              />
+              <label for="address">Full Address</label>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="address2"
+                name="address2"
+                placeholder="Address Line 2"
+              />
+              <label for="address2">Address Line 2 (Optional)</label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    name="city"
+                    placeholder="City"
+                    required
+                  />
+                  <label for="city">City</label>
+                  <div class="invalid-feedback">
+                    Valid city name is required.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <select class="form-select" id="state" name="state" required>
+                    <option value="">Select State</option>
+                    <option value="AN">Andaman and Nicobar Islands</option>
+                    <option value="AP">Andhra Pradesh</option>
+                    <option value="AR">Arunachal Pradesh</option>
+                    <option value="AS">Assam</option>
+                    <option value="BR">Bihar</option>
+                    <option value="CH">Chandigarh</option>
+                    <option value="CT">Chhattisgarh</option>
+                    <option value="DN">Dadra and Nagar Haveli</option>
+                    <option value="DD">Daman and Diu</option>
+                    <option value="DL">Delhi</option>
+                    <option value="GA">Goa</option>
+                    <option value="GJ">Gujarat</option>
+                    <option value="HR">Haryana</option>
+                    <option value="HP">Himachal Pradesh</option>
+                    <option value="JK">Jammu and Kashmir</option>
+                    <option value="JH">Jharkhand</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="KL">Kerala</option>
+                    <option value="LA">Ladakh</option>
+                    <option value="LD">Lakshadweep</option>
+                    <option value="MP">Madhya Pradesh</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="MN">Manipur</option>
+                    <option value="ML">Meghalaya</option>
+                    <option value="MZ">Mizoram</option>
+                    <option value="NL">Nagaland</option>
+                    <option value="OR">Odisha</option>
+                    <option value="PY">Puducherry</option>
+                    <option value="PB">Punjab</option>
+                    <option value="RJ">Rajasthan</option>
+                    <option value="SK">Sikkim</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="TG">Telangana</option>
+                    <option value="TR">Tripura</option>
+                    <option value="UP">Uttar Pradesh</option>
+                    <option value="UT">Uttarakhand</option>
+                    <option value="WB">West Bengal</option>
+                  </select>
+                  <label for="state">Select State</label>
+                  <div class="invalid-feedback">
+                    Please select a valid state.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zipcode"
+                    name="zipcode"
+                    placeholder="Zip Code"
+                    required
+                  />
+                  <label for="zipcode">Zip Code</label>
+                  <div class="invalid-feedback">
+                    Valid zip code is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                id="landmarks"
+                name="landmarks"
+                placeholder="Landmarks"
+              />
+              <label for="landmarks">Landmarks (Optional)</label>
+            </div>
+
+            <button class="checkout-btn" type="submit">
+              <i class="fas fa-lock me-2"></i> Update Details
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- contact-area-end -->
+    </main>
+    <!-- main-area-end -->
+
+    <!-- footer-area -->
+    <footer>
+      <div class="footer__area">
+        <div class="footer__newsletter-three">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-5">
+                <div class="footer__newsletter-content">
+                  <h2 class="title">Sign Up For Newsletter!</h2>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <form action="#" class="footer__newsletter-form-two">
+                  <input type="email" placeholder="Type Your E-mail" />
+                  <button type="submit">
+                    Subscribe
+                    <img
+                      src="assets/img/icon/right_arrow04.svg"
+                      alt=""
+                      class="injectable"
+                    />
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__top footer__top-three fix">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="footer__widget">
+                  <div class="footer__logo">
+                    <a href=""><img src="assets/img/logo/logo.png" alt="" /></a>
+                  </div>
+                  <div class="footer__content footer__content-two">
+                    <p>Pet4fun Short Descriptions</p>
+                  </div>
+                  <div class="footer__social">
+                    <h6 class="title">Follow Us On:</h6>
+                    <ul class="list-wrap">
+                      <li>
+                        <a href="https://www.facebook.com/" target="_blank"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://twitter.com/" target="_blank"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.whatsapp.com/" target="_blank"
+                          ><i class="fab fa-whatsapp"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/" target="_blank"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank"
+                          ><i class="fab fa-youtube"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Quick Links</h4>
+                  <div class="footer__link">
+                    <ul class="list-wrap">
+                      <li><a href="">Animal Rescue</a></li>
+                      <li><a href="">Humane Education</a></li>
+                      <li><a href="">Caregivers</a></li>
+                      <li><a href="">New & Blog</a></li>
+                      <li><a href="">Gallery</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Support</h4>
+                  <div class="footer__link">
+                    <ul class="list-wrap">
+                      <li><a href="">About us</a></li>
+                      <li><a href="">Contact us</a></li>
+                      <li><a href="">Book Appointment</a></li>
+                      <li><a href="">FAQ</a></li>
+                      <li><a href="">Locations</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                  <h4 class="footer__widget-title">Contact</h4>
+                  <div class="footer__contact">
+                    <ul class="list-wrap">
+                      <li>Kolkata, West Bengal, India</li>
+                      <li><a href="tel:0123456789">+91 9876543210</a></li>
+                      <li>
+                        <a href="mailto:petshop@gmail.com">petshop@gmail.com</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__shape-wrap">
+            <img
+              src="assets/img/images/footer_shape01.png"
+              alt="img"
+              data-aos="fade-up-right"
+              data-aos-delay="400"
+            />
+            <img
+              src="assets/img/images/footer_shape02.png"
+              alt="img"
+              data-aos="fade-up-left"
+              data-aos-delay="400"
+            />
+          </div>
+        </div>
+        <div class="footer__bottom footer__bottom-two">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-5">
+                <div class="copyright-text copyright-text-three">
+                  <p>Copyright © 2025. All Rights Reserved.</p>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="footer__bottom-menu footer__bottom-menu-two">
+                  <ul class="list-wrap">
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Career</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer-area-end -->
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.odometer.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/svg-inject.min.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/ajax-form.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      SVGInject(document.querySelectorAll("img.injectable"));
+    </script>
+  </body>
+</html>
